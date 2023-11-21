@@ -8,7 +8,7 @@ public class CustomerMapper {
     public static CustomerDto mapToCustomerDto(Customer customer){
 
         return new CustomerDto(
-                customer.getId(),
+                customer.getPhone_number(),
                 customer.getZipcode(),
                 customer.getCity(),
                 customer.getState(),
@@ -18,7 +18,7 @@ public class CustomerMapper {
 
     public static Customer mapToCustomer(CustomerDto customerDto){
         return new Customer(
-                customerDto.getId(),
+                customerDto.getPhone_number(),
                 customerDto.getZipcode(),
                 customerDto.getCity(),
                 customerDto.getState(),

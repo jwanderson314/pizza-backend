@@ -22,8 +22,7 @@ import jakarta.persistence.Table;
 @Table(name="CUSTOMER")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long phone_number;
     @Column(name="zipcode")
     private String zipcode;
     @Column(name="city")
