@@ -12,7 +12,7 @@ public class CustomerMapper {
                 customer.getZipcode(),
                 customer.getCity(),
                 customer.getState(),
-                customer.getState()
+                customer.getStreet_address()
         );
     }
 

@@ -5,7 +5,11 @@ import com.jsonpizzeria.pizzabackend.mapper.CustomerOrderMapper;
 import com.jsonpizzeria.pizzabackend.model.CustomerOrder;
 import com.jsonpizzeria.pizzabackend.repository.CustomerOrderRepository;
 import com.jsonpizzeria.pizzabackend.services.CustomerOrderService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@AllArgsConstructor
 public class CustomerOrderServiceImpl implements CustomerOrderService {
     private CustomerOrderRepository customerOrderRepository;
     @Override

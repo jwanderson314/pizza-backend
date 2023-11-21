@@ -1,9 +1,12 @@
 package com.jsonpizzeria.pizzabackend.dto;
 
+import com.jsonpizzeria.pizzabackend.model.CustomerOrder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter

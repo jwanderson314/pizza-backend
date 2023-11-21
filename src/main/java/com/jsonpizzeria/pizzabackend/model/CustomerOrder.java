@@ -17,15 +17,27 @@ import java.util.Date;
 @Table(name="CUSTOMERORDER")
 public class CustomerOrder {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long order_id;
-//    @Column(name = "phone_number")
-//    private Long phone_number;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "phone_number",referencedColumnName = "phone_number")
+    private Customer customer;
     @Column(name = "employee_id")
     private Long employee_id;
     @Column(name="date")
     private Date date;
     @Column(name="time")
     private Timestamp time;
+
+
+    @PrePersist
+    protected void onCreate(){
+        this.date = new Date();
+        this.time = new Timestamp(System.currentTimeMillis());
+    }
+
+
 
 
 }
