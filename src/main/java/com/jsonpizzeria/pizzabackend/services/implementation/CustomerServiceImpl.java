@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer updateCustomer(Long phone_number, CustomerDto updatedCustomerDto) {
         Customer customer = customerRepository.findById(phone_number).orElseThrow(
-                () -> new ResourceNotFoundException("Employee does not exists with given id: " + phone_number)
+                () -> new ResourceNotFoundException("Customer does not exists with given id: " + phone_number)
         );
         if (customer != null){
             if(updatedCustomerDto.getZipcode() != null){

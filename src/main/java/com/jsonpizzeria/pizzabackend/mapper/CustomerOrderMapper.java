@@ -9,18 +9,18 @@ public class CustomerOrderMapper {
     public static CustomerOrderDto mapToCustomerOrderDto(CustomerOrder customerOrder){
         return new CustomerOrderDto(
                 customerOrder.getOrder_id(),
-                customerOrder.getEmployee_id(),
                 customerOrder.getDate(),
-                customerOrder.getCustomer()
+                customerOrder.getCustomer(),
+                customerOrder.getEmployee()
         );
     }
 
     public static CustomerOrder mapToCustomerOrder(CustomerOrderDto customerOrderDto){
         return new CustomerOrder(
                 customerOrderDto.getOrder_id(),
-                customerOrderDto.getEmployee_id(),
                 customerOrderDto.getDate(),
-                customerOrderDto.getCustomer()
+                customerOrderDto.getCustomer(),
+                customerOrderDto.getEmployee()
         );
     }
 }

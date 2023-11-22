@@ -18,8 +18,6 @@ public class CustomerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long order_id;
-    @Column(name = "employee_id")
-    private Long employee_id;
     @Column(name="date")
     private Date date;
 
@@ -27,6 +25,9 @@ public class CustomerOrder {
     @JoinColumn(referencedColumnName = "phone_number")
     private Customer customer;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "employee_id")
+    private Employee employee;
 
     @PrePersist
     protected void onCreate(){
