@@ -1,5 +1,6 @@
 package com.jsonpizzeria.pizzabackend.dto;
 
+import com.jsonpizzeria.pizzabackend.model.Customer;
 import com.jsonpizzeria.pizzabackend.model.CustomerOrder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,5 +19,6 @@ public class CustomerDto {
     private String city;
     private String state;
     private String street_address;
+    private List<CustomerOrder> orders;
 
 }

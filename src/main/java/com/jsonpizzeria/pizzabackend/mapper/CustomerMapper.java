@@ -12,7 +12,8 @@ public class CustomerMapper {
                 customer.getZipcode(),
                 customer.getCity(),
                 customer.getState(),
-                customer.getStreet_address()
+                customer.getStreet_address(),
+                customer.getOrders()
         );
     }
 
@@ -22,7 +23,8 @@ public class CustomerMapper {
                 customerDto.getZipcode(),
                 customerDto.getCity(),
                 customerDto.getState(),
-                customerDto.getStreet_address()
+                customerDto.getStreet_address(),
+                customerDto.getOrders()
         );
     }
 }

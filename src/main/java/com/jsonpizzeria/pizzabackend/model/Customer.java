@@ -1,7 +1,5 @@
 package com.jsonpizzeria.pizzabackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,5 +26,13 @@ public class Customer {
     private String state;
     @Column(name="street_address")
     private String street_address;
+
+    @OneToMany(mappedBy = "customer")
+    private List<CustomerOrder> orders;
+
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "phone_number",referencedColumnName = "phone_number")
+//    private CustomerOrder customerOrder;
 
 }

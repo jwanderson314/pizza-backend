@@ -18,8 +18,7 @@ import java.util.List;
 public class CustomerOrderDto {
 
     private Long order_id;
-    private Customer customer;
     private Long employee_id;
     private Date date;
-    private Timestamp time;
+    private Customer customer;
 }
