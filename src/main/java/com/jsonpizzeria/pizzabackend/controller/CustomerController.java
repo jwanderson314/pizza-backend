@@ -1,11 +1,14 @@
 package com.jsonpizzeria.pizzabackend.controller;
 
 import com.jsonpizzeria.pizzabackend.dto.CustomerDto;
+import com.jsonpizzeria.pizzabackend.model.Customer;
 import com.jsonpizzeria.pizzabackend.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -22,9 +25,15 @@ public class CustomerController {
     }
 
     @PutMapping("{phone_number}")
-    public ResponseEntity<CustomerDto> updateCustomer(@PathVariable("phone_number") Long phone_number,@RequestBody CustomerDto updatedCustomer){
-        CustomerDto customerDto = customerService.updateCustomer(phone_number,updatedCustomer);
-        return ResponseEntity.ok(customerDto);
+    public ResponseEntity<Customer> updateCustomer(@PathVariable("phone_number") Long phone_number,@RequestBody CustomerDto updatedCustomer){
+        Customer customer = customerService.updateCustomer(phone_number,updatedCustomer);
+        return ResponseEntity.ok(customer);
 
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerDto>> getAllCustomers(){
+        List<CustomerDto> customers = customerService.getAllCustomers();
+        return ResponseEntity.ok(customers);
     }
 }

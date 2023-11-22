@@ -9,7 +9,9 @@ import com.jsonpizzeria.pizzabackend.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -24,16 +26,32 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDto updateCustomer(Long phone_number, CustomerDto updatedCustomerDto) {
+    public Customer updateCustomer(Long phone_number, CustomerDto updatedCustomerDto) {
         Customer customer = customerRepository.findById(phone_number).orElseThrow(
                 () -> new ResourceNotFoundException("Employee does not exists with given id: " + phone_number)
         );
-        customer.setZipcode(updatedCustomerDto.getZipcode());
-        customer.setCity(updatedCustomerDto.getCity());
-        customer.setState(updatedCustomerDto.getState());
-        customer.setStreet_address(updatedCustomerDto.getStreet_address());
-        Customer updatedCustomerObj = customerRepository.save(customer);
-        return CustomerMapper.mapToCustomerDto(updatedCustomerObj);
+        if (customer != null){
+            if(updatedCustomerDto.getZipcode() != null){
+                customer.setZipcode(updatedCustomerDto.getZipcode());
+            }
+            if(updatedCustomerDto.getCity() != null){
+                customer.setCity(updatedCustomerDto.getCity());
+            }
+            if(updatedCustomerDto.getState() != null){
+                customer.setState(updatedCustomerDto.getState());
+            }
+            if(updatedCustomerDto.getStreet_address() != null){
+                customer.setStreet_address(updatedCustomerDto.getStreet_address());
+            }
+            return customerRepository.save(customer);
+        }
+        return null;
+    }
+
+    @Override
+    public List<CustomerDto> getAllCustomers() {
+        List<Customer> customers = customerRepository.findAll();
+        return customers.stream().map((customer) -> CustomerMapper.mapToCustomerDto(customer)).collect(Collectors.toList());
     }
 
 }
