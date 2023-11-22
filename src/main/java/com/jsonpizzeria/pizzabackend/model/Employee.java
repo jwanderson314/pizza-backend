@@ -21,6 +21,6 @@ public class Employee {
     @Column(name ="username")
     private String username;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToOne(mappedBy = "employee")
     private CustomerOrder customerOrder;
 }

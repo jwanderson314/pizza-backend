@@ -25,7 +25,7 @@ public class CustomerOrder {
     @JoinColumn(referencedColumnName = "phone_number")
     private Customer customer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(referencedColumnName = "employee_id")
     private Employee employee;
 
