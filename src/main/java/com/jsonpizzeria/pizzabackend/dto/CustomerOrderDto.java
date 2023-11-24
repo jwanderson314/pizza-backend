@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class CustomerOrderDto {
 
     private Long order_id;
     private Date date;
-    private Customer customer;
-    private Employee employee;
-    private List<OrderDetail> orderDetails;
+    private CustomerDto customer;
+    private EmployeeDto employee;
+//    private List<OrderDetail> orderDetails = new ArrayList<>();
 }

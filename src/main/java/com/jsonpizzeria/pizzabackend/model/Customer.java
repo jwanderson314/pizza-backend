@@ -1,10 +1,13 @@
 package com.jsonpizzeria.pizzabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,8 +29,9 @@ public class Customer {
     @Column(name="street_address")
     private String street_address;
 
-    @OneToMany(mappedBy = "customer")
-    private List<CustomerOrder> orders;
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<CustomerOrder> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
     private List<OrderDetail> orderDetails;

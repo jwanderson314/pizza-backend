@@ -1,5 +1,6 @@
 package com.jsonpizzeria.pizzabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,19 +20,22 @@ public class CustomerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long order_id;
+
     @Column(name="date")
     private Date date;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(referencedColumnName = "phone_number")
+    @JsonBackReference
     private Customer customer;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(referencedColumnName = "employee_id")
+    @JsonBackReference
     private Employee employee;
 
-    @OneToMany(mappedBy = "customerOrder",fetch = FetchType.EAGER)
-    private List<OrderDetail> orderDetails;
+//    @OneToMany(mappedBy = "customerOrder",fetch = FetchType.EAGER)
+//    private List<OrderDetail> orderDetails;
 
     @PrePersist
     protected void onCreate(){

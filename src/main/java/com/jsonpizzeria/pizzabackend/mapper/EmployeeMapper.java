@@ -5,12 +5,14 @@ import com.jsonpizzeria.pizzabackend.model.Employee;
 
 public class EmployeeMapper {
     public static EmployeeDto mapToEmployeeDto(Employee employee){
-        return new EmployeeDto(
-                employee.getEmployee_id(),
-                employee.getUsername(),
-                employee.getCustomerOrder(),
-                employee.getOrderDetails()
-        );
+        if (employee == null){
+            return null;
+        }
+        EmployeeDto employeeDto = new EmployeeDto();
+        employeeDto.setEmployee_id(employee.getEmployee_id());
+        employeeDto.setUsername(employee.getUsername());
+
+        return employeeDto;
     }
     public static Employee mapToEmployee(EmployeeDto employeeDto){
         return new Employee(

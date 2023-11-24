@@ -7,15 +7,18 @@ public class CustomerMapper {
 
     public static CustomerDto mapToCustomerDto(Customer customer){
 
-        return new CustomerDto(
-                customer.getPhone_number(),
-                customer.getZipcode(),
-                customer.getCity(),
-                customer.getState(),
-                customer.getStreet_address(),
-                customer.getOrders(),
-                customer.getOrderDetails()
-        );
+        if(customer == null){
+            return null;
+        }
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setPhone_number(customer.getPhone_number());
+        customerDto.setZipcode(customer.getZipcode());
+        customerDto.setCity(customer.getCity());
+        customerDto.setState(customer.getState());
+        customerDto.setStreet_address(customer.getStreet_address());
+
+        return customerDto;
+
     }
 
     public static Customer mapToCustomer(CustomerDto customerDto){

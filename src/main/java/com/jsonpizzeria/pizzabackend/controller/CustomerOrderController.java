@@ -1,6 +1,7 @@
 package com.jsonpizzeria.pizzabackend.controller;
 
 import com.jsonpizzeria.pizzabackend.dto.CustomerOrderDto;
+import com.jsonpizzeria.pizzabackend.model.CustomerOrder;
 import com.jsonpizzeria.pizzabackend.services.CustomerOrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,8 @@ public class CustomerOrderController {
     private CustomerOrderService customerOrderService;
 
     @PostMapping
-    public ResponseEntity<CustomerOrderDto> createOrder(@RequestBody CustomerOrderDto customerOrderDto){
-        CustomerOrderDto savedOrder = customerOrderService.createOrder(customerOrderDto);
+    public ResponseEntity<CustomerOrder> createOrder(@RequestBody CustomerOrderDto orderDto){
+        CustomerOrder savedOrder = customerOrderService.createOrder(orderDto);
         return new ResponseEntity<>(savedOrder, HttpStatus.CREATED);
     }
 }
