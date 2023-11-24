@@ -13,7 +13,8 @@ public class CustomerMapper {
                 customer.getCity(),
                 customer.getState(),
                 customer.getStreet_address(),
-                customer.getOrders()
+                customer.getOrders(),
+                customer.getOrderDetails()
         );
     }
 
@@ -24,7 +25,8 @@ public class CustomerMapper {
                 customerDto.getCity(),
                 customerDto.getState(),
                 customerDto.getStreet_address(),
-                customerDto.getOrders()
+                customerDto.getOrders(),
+                customerDto.getOrderDetails()
         );
     }
 }

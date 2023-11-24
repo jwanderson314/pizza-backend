@@ -8,14 +8,16 @@ public class EmployeeMapper {
         return new EmployeeDto(
                 employee.getEmployee_id(),
                 employee.getUsername(),
-                employee.getCustomerOrder()
+                employee.getCustomerOrder(),
+                employee.getOrderDetails()
         );
     }
     public static Employee mapToEmployee(EmployeeDto employeeDto){
         return new Employee(
                 employeeDto.getEmployee_id(),
                 employeeDto.getUsername(),
-                employeeDto.getCustomerOrder()
+                employeeDto.getCustomerOrder(),
+                employeeDto.getOrderDetails()
         );
     }
 }

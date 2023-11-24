@@ -2,7 +2,7 @@ INSERT INTO CUSTOMER VALUES(
     9085656662,'55501','Berkeley Heights','NJ','100 Connell Drive'
 );
 
-INSERT INTO PRODUCT (PRODUCT_NAME, DESCR, PRICE)
+INSERT INTO PRODUCT (PRODUCT_NAME, DESCRIPTION,PRICE)
 VALUES
     ('Soda', '2 Liter', 3.25),
     ('Breadsticks', '8 per pack', 2.50),

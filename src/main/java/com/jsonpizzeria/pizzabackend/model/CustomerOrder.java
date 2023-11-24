@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,6 +29,9 @@ public class CustomerOrder {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(referencedColumnName = "employee_id")
     private Employee employee;
+
+    @OneToMany(mappedBy = "customerOrder",fetch = FetchType.EAGER)
+    private List<OrderDetail> orderDetails;
 
     @PrePersist
     protected void onCreate(){

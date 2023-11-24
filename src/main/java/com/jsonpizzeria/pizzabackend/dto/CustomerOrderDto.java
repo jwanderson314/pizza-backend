@@ -3,6 +3,7 @@ package com.jsonpizzeria.pizzabackend.dto;
 import com.jsonpizzeria.pizzabackend.model.Customer;
 import com.jsonpizzeria.pizzabackend.model.CustomerOrder;
 import com.jsonpizzeria.pizzabackend.model.Employee;
+import com.jsonpizzeria.pizzabackend.model.OrderDetail;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,4 +23,5 @@ public class CustomerOrderDto {
     private Date date;
     private Customer customer;
     private Employee employee;
+    private List<OrderDetail> orderDetails;
 }

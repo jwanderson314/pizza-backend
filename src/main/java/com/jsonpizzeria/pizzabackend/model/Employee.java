@@ -23,4 +23,7 @@ public class Employee {
 
     @OneToOne(mappedBy = "employee")
     private CustomerOrder customerOrder;
+
+    @OneToMany(mappedBy = "employee",fetch = FetchType.EAGER)
+    private List<OrderDetail> orderDetails;
 }

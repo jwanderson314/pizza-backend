@@ -11,7 +11,8 @@ public class CustomerOrderMapper {
                 customerOrder.getOrder_id(),
                 customerOrder.getDate(),
                 customerOrder.getCustomer(),
-                customerOrder.getEmployee()
+                customerOrder.getEmployee(),
+                customerOrder.getOrderDetails()
         );
     }
 
@@ -20,7 +21,8 @@ public class CustomerOrderMapper {
                 customerOrderDto.getOrder_id(),
                 customerOrderDto.getDate(),
                 customerOrderDto.getCustomer(),
-                customerOrderDto.getEmployee()
+                customerOrderDto.getEmployee(),
+                customerOrderDto.getOrderDetails()
         );
     }
 }

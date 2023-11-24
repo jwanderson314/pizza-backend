@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.List;
 
 
@@ -29,6 +28,9 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer")
     private List<CustomerOrder> orders;
+
+    @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
+    private List<OrderDetail> orderDetails;
 
 
 //    @OneToMany(cascade = CascadeType.ALL)
