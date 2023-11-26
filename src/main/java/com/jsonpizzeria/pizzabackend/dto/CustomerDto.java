@@ -23,7 +23,7 @@ public class CustomerDto {
     private String street_address;
     @JsonIgnore
     private List<CustomerOrder> orders;
-    @JsonIgnore
-    private List<OrderDetail> orderDetails;
+//    @JsonIgnore
+//    private List<OrderDetail> orderDetails;
 
 }

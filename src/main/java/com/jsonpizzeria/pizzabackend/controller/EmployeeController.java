@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")
@@ -30,5 +32,11 @@ public class EmployeeController {
     public ResponseEntity<String> deleteEmployee(@PathVariable("employee_id") Long employee_id){
         employeeService.deleteEmployee(employee_id);
         return ResponseEntity.ok("Employee deleted successfully!");
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeDto>> getAllEmployees(){
+        List<EmployeeDto> employees = employeeService.getAllEmployees();
+        return ResponseEntity.ok(employees);
     }
 }

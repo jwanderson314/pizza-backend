@@ -33,8 +33,9 @@ public class Customer {
     @JsonManagedReference
     private List<CustomerOrder> orders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
-    private List<OrderDetail> orderDetails;
+//    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JsonManagedReference
+//    private List<OrderDetail> orderDetails = new ArrayList<>();
 
 
 //    @OneToMany(cascade = CascadeType.ALL)

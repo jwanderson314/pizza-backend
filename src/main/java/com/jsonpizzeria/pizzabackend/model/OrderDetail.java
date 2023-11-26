@@ -1,5 +1,6 @@
 package com.jsonpizzeria.pizzabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,14 +20,22 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_detail_id")
-    private Long orderdetail_id;
+    private Long order_detail_id;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
+    @Column(name = "date")
+    private Date date;
+
+    @Column(name = "zipcode")
+    private String zipcode;
+
+    @OneToOne
+    @JoinColumn(referencedColumnName = "order_id")
+    @JsonBackReference
     private CustomerOrder customerOrder;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
+    @OneToOne
+    @JoinColumn(referencedColumnName = "product_id")
+    @JsonBackReference
     private Product product;
 
     @Column(name = "quantity")
@@ -38,14 +47,15 @@ public class OrderDetail {
     @Column(name = "historic_price")
     private BigDecimal historicPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @OneToOne
+    @JoinColumn(referencedColumnName = "employee_id")
     private Employee employee;
 
-    @ManyToOne
-    @JoinColumn(name = "zipcode")
-    private Customer customer;
 
-    @Column(name = "order_date")
-    private Date orderDate;
+
+
+    @PrePersist
+    protected void onCreate(){
+        this.date = new Date();
+    }
 }

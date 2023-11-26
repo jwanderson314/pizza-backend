@@ -1,6 +1,8 @@
 package com.jsonpizzeria.pizzabackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +23,8 @@ public class CustomerOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long order_id;
 
-    @Column(name="date")
-    private Date date;
+//    @Column(name="date")
+//    private Date date;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "phone_number")
@@ -37,10 +39,17 @@ public class CustomerOrder {
 //    @OneToMany(mappedBy = "customerOrder",fetch = FetchType.EAGER)
 //    private List<OrderDetail> orderDetails;
 
-    @PrePersist
-    protected void onCreate(){
-        this.date = new Date();
-    }
+    @OneToOne(mappedBy = "customerOrder")
+    @JsonManagedReference
+    @JsonIgnore
+    private OrderDetail orderDetail;
+
+//    @OneToOne(mappedBy = "orderDate")
+//    @JsonManagedReference
+//    private OrderDetail orderDetail1;
+
+
+
 
 
 

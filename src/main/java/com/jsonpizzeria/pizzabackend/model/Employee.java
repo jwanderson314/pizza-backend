@@ -1,5 +1,6 @@
 package com.jsonpizzeria.pizzabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,8 @@ public class Employee {
     @JsonManagedReference
     private CustomerOrder customerOrder;
 
-    @OneToMany(mappedBy = "employee",fetch = FetchType.EAGER)
-    private List<OrderDetail> orderDetails;
+    @OneToOne(mappedBy = "employee")
+    @JsonManagedReference
+    @JsonIgnore
+    private OrderDetail orderDetail;
 }

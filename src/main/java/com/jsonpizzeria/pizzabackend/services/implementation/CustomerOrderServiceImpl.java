@@ -39,7 +39,6 @@ public class CustomerOrderServiceImpl implements CustomerOrderService {
         CustomerOrder customerOrder = new CustomerOrder();
         customerOrder.setOrder_id(orderDto.getOrder_id());
         customerOrder.setCustomer(customer);
-        customerOrder.setDate(orderDto.getDate());
         customerOrder.setEmployee(employee);
 
         return customerOrderRepository.save(customerOrder);

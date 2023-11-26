@@ -15,11 +15,14 @@ public class EmployeeMapper {
         return employeeDto;
     }
     public static Employee mapToEmployee(EmployeeDto employeeDto){
+        if(employeeDto == null){
+            return null;
+        }
         return new Employee(
                 employeeDto.getEmployee_id(),
                 employeeDto.getUsername(),
                 employeeDto.getCustomerOrder(),
-                employeeDto.getOrderDetails()
+                employeeDto.getOrderDetail()
         );
     }
 }

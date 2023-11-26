@@ -28,8 +28,7 @@ public class CustomerMapper {
                 customerDto.getCity(),
                 customerDto.getState(),
                 customerDto.getStreet_address(),
-                customerDto.getOrders(),
-                customerDto.getOrderDetails()
+                customerDto.getOrders()
         );
     }
 }

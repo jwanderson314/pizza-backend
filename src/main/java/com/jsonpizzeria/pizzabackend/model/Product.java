@@ -1,5 +1,6 @@
 package com.jsonpizzeria.pizzabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
     private Long product_id;
     @Column(name = "product_name")
     private String product_name;
@@ -24,5 +26,9 @@ public class Product {
     private String description;
     @Column(name = "price")
     private BigDecimal price;
+
+    @OneToOne(mappedBy = "product")
+    @JsonManagedReference
+    private OrderDetail orderDetail;
 
 }

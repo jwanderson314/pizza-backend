@@ -17,20 +17,21 @@ public class CustomerOrderMapper {
         EmployeeDto employeeDto = EmployeeMapper.mapToEmployeeDto(customerOrder.getEmployee());
         return new CustomerOrderDto(
                 customerOrder.getOrder_id(),
-                customerOrder.getDate(),
                 customerDto,
-                employeeDto
-//                customerOrder.getOrderDetails()
+                employeeDto,
+                customerOrder.getOrderDetail()
         );
     }
 
     public static CustomerOrder mapToCustomerOrder(CustomerOrderDto customerOrderDto){
+        if(customerOrderDto == null){
+            return null;
+        }
         return new CustomerOrder(
                 customerOrderDto.getOrder_id(),
-                customerOrderDto.getDate(),
                 mapToCustomer(customerOrderDto.getCustomer()),
-                mapToEmployee(customerOrderDto.getEmployee())
-//                customerOrderDto.getOrderDetails()
+                mapToEmployee(customerOrderDto.getEmployee()),
+                customerOrderDto.getOrderDetail()
         );
     }
 
@@ -79,7 +80,7 @@ public class CustomerOrderMapper {
         employee.setEmployee_id(employeeDto.getEmployee_id());
         employee.setUsername(employeeDto.getUsername());
         employee.setCustomerOrder(employeeDto.getCustomerOrder());
-        employee.setOrderDetails(employeeDto.getOrderDetails());
+        employee.setOrderDetail(employeeDto.getOrderDetail());
 
         return employee;
     }
