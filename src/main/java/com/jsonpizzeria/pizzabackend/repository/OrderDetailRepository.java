@@ -10,4 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface OrderDetailRepository extends JpaRepository<OrderDetail,Long> {
+    List<OrderDetail> findByEmployeeAndDateBetweenOrderByDate(Employee employee, Date startDate, Date endDate);
+    List<OrderDetail> findByZipcodeAndDateBetweenOrderByDate(String zipcode, Date startDate, Date endDate);
 }

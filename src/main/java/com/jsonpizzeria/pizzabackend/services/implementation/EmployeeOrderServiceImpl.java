@@ -51,4 +51,12 @@ public class EmployeeOrderServiceImpl implements EmployeeService {
         List<Employee> employees = employeeRepository.findAll();
         return employees.stream().map((employee) -> EmployeeMapper.mapToEmployeeDto(employee)).collect(Collectors.toList());
     }
+
+    @Override
+    public EmployeeDto getEmployeeById(Long employee_id) {
+        Employee employee = employeeRepository.findById(employee_id).orElseThrow(
+                () -> new ResourceNotFoundException("Employee not found")
+        );
+        return EmployeeMapper.mapToEmployeeDto(employee);
+    }
 }

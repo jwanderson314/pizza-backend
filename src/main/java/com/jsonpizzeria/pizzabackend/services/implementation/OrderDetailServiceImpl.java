@@ -17,6 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.condition.ProducesRequestCondition;
 
+import java.util.Date;
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class OrderDetailServiceImpl implements OrderDetailService {
@@ -53,5 +56,15 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         return orderDetailRepository.save(orderDetail);
 
 
+    }
+
+    @Override
+    public List<OrderDetail> getOrdersByEmployeeAndWeek(Employee employee, Date startDate, Date endDate) {
+        return orderDetailRepository.findByEmployeeAndDateBetweenOrderByDate(employee,startDate,endDate);
+    }
+
+    @Override
+    public List<OrderDetail> getOrdersByZipcodeAndWeek(String zipcode, Date startDate, Date endDate) {
+        return orderDetailRepository.findByZipcodeAndDateBetweenOrderByDate(zipcode,startDate,endDate);
     }
 }
