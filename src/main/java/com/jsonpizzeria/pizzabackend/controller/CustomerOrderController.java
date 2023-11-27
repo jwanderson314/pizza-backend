@@ -1,15 +1,15 @@
 package com.jsonpizzeria.pizzabackend.controller;
 
 import com.jsonpizzeria.pizzabackend.dto.CustomerOrderDto;
+import com.jsonpizzeria.pizzabackend.dto.EmployeeDto;
 import com.jsonpizzeria.pizzabackend.model.CustomerOrder;
 import com.jsonpizzeria.pizzabackend.services.CustomerOrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -21,5 +21,11 @@ public class CustomerOrderController {
     public ResponseEntity<CustomerOrder> createOrder(@RequestBody CustomerOrderDto orderDto){
         CustomerOrder savedOrder = customerOrderService.createOrder(orderDto);
         return new ResponseEntity<>(savedOrder, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerOrderDto>> getAllCustomerOrders(){
+        List<CustomerOrderDto> customerOrders = customerOrderService.getAllCustomerOrders();
+        return ResponseEntity.ok(customerOrders);
     }
 }

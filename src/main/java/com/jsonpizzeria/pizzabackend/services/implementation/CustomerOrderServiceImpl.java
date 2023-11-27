@@ -3,6 +3,7 @@ package com.jsonpizzeria.pizzabackend.services.implementation;
 import com.jsonpizzeria.pizzabackend.dto.CustomerOrderDto;
 import com.jsonpizzeria.pizzabackend.exception.ResourceNotFoundException;
 import com.jsonpizzeria.pizzabackend.mapper.CustomerOrderMapper;
+import com.jsonpizzeria.pizzabackend.mapper.EmployeeMapper;
 import com.jsonpizzeria.pizzabackend.model.Customer;
 import com.jsonpizzeria.pizzabackend.model.CustomerOrder;
 import com.jsonpizzeria.pizzabackend.model.Employee;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -42,5 +45,11 @@ public class CustomerOrderServiceImpl implements CustomerOrderService {
         customerOrder.setEmployee(employee);
 
         return customerOrderRepository.save(customerOrder);
+    }
+
+    @Override
+    public List<CustomerOrderDto> getAllCustomerOrders() {
+        List<CustomerOrder> customerOrders = customerOrderRepository.findAll();
+        return customerOrders.stream().map((customerOrder) -> CustomerOrderMapper.mapToCustomerOrderDto(customerOrder)).collect(Collectors.toList());
     }
 }
