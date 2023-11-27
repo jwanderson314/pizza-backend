@@ -13,4 +13,6 @@ public interface OrderDetailService {
     List<OrderDetail> getOrdersByEmployeeAndWeek(Employee employee, Date startDate, Date endDate);
 
     List<OrderDetail> getOrdersByZipcodeAndWeek(String zipcode, Date startDate, Date endDate);
+
+    List<OrderDetailDto> getAllOrderDetails();
 }

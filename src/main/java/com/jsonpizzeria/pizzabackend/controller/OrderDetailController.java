@@ -1,5 +1,6 @@
 package com.jsonpizzeria.pizzabackend.controller;
 
+import com.jsonpizzeria.pizzabackend.dto.EmployeeDto;
 import com.jsonpizzeria.pizzabackend.dto.OrderDetailDto;
 import com.jsonpizzeria.pizzabackend.mapper.EmployeeMapper;
 import com.jsonpizzeria.pizzabackend.model.Employee;
@@ -47,6 +48,12 @@ public class OrderDetailController {
         List<OrderDetail> orders = orderDetailService.getOrdersByZipcodeAndWeek(zipcode,convertedStartDate,convertedEndDate);
 
         return new ResponseEntity<>(orders,HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<OrderDetailDto>> getAllOrderDetails(){
+        List<OrderDetailDto> orderDetailDtos = orderDetailService.getAllOrderDetails();
+        return ResponseEntity.ok(orderDetailDtos);
     }
 
 }

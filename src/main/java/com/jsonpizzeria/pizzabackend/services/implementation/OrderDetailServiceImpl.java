@@ -1,7 +1,9 @@
 package com.jsonpizzeria.pizzabackend.services.implementation;
 
+import com.jsonpizzeria.pizzabackend.dto.EmployeeDto;
 import com.jsonpizzeria.pizzabackend.dto.OrderDetailDto;
 import com.jsonpizzeria.pizzabackend.exception.ResourceNotFoundException;
+import com.jsonpizzeria.pizzabackend.mapper.EmployeeMapper;
 import com.jsonpizzeria.pizzabackend.mapper.OrderDetailMapper;
 import com.jsonpizzeria.pizzabackend.model.CustomerOrder;
 import com.jsonpizzeria.pizzabackend.model.Employee;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.mvc.condition.ProducesRequestCondition;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -66,5 +69,11 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Override
     public List<OrderDetail> getOrdersByZipcodeAndWeek(String zipcode, Date startDate, Date endDate) {
         return orderDetailRepository.findByZipcodeAndDateBetweenOrderByDate(zipcode,startDate,endDate);
+    }
+
+    @Override
+    public List<OrderDetailDto> getAllOrderDetails() {
+        List<OrderDetail> orderDetails = orderDetailRepository.findAll();
+        return orderDetails.stream().map((orderDetail) -> OrderDetailMapper.mapToOrderDetailDto(orderDetail)).collect(Collectors.toList());
     }
 }
